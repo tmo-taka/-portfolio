@@ -7,7 +7,7 @@ module.exports = {
 	// エントリーポイント(メインのjsファイル)
 	entry: {
 		'js': path.resolve(__dirname, "./js/serve.js"),
-		//'style': path.resolve(__dirname, "./buildcss/top.scss"),
+		'style': path.resolve(__dirname, "./buildcss/top.scss"),
 	},
 	// ファイルの出力設定
 	output: {
@@ -25,12 +25,12 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				/*test: /\.scss$/,
+				test: /\.scss$/,
 				use: [
 					{ loader: MiniCssExtractPlugin.loader },
-					{ loader: 'css-loader' },
+					{ loader: 'css-loader', options:{ url: false}},
 					{ loader: 'sass-loader' }
-				]*/
+				]
 			}
 		]
 	},
