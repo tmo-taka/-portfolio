@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="./buildcss/rcss.css">
+<link rel="stylesheet" href="./buildcss/top.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.min.css">
+<link rel="stylesheet" href="./dist/css/animsition.min.css">
+<script type="text/javascript" src="./js/main.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript" src="./js/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.min.js"></script>
+<script src="./dist/js/animsition.min.js"></script>
+<script>
+	$(function(){
+		var leftEye = $('.mainVis_eyeAreaR-right');
+		var rightEye = $('.mainVis_eyeAreaL-left');
+		var Reye = $('.mainVis_eyeAreaR');
+		var Leye = $('.mainVis_eyeAreaL');
+		var eye_radius = $('.mainVis_eyeAreaR').width()/2;
+		var Reye_black = $('.mainVis_eyeAreaR-right');
+		var Leye_black = $('.mainVis_eyeAreaL-left');
+		var Lcenter_x = (Leye.offset().left) + (Leye.width()/2);
+		var Lcenter_y = (Leye.offset().top) + (Leye.height()/2);
+		var Rcenter_x = (Reye.offset().left) + (Reye.width()/2);
+		var Rcenter_y = (Reye.offset().top) + (Reye.height()/2);
+		var mainVisual = $('.mainVis');
+
+		mainVisual.on('mousemove',function(e){
+			hoverJudge(e.clientX,e.clientY,Lcenter_x,Lcenter_y,Leye_black,eye_radius);
+			hoverJudge(e.clientX,e.clientY,Rcenter_x,Rcenter_y,Reye_black,eye_radius);
+			$('.mouth_judge').on({
+				'mouseenter' : function(){
+					$('.mainVis_mouthArea').addClass('on');
+				},
+				'mouseleave' : function(){
+					$('.mainVis_mouthArea').removeClass('on');
+				},
+			});
+		});
+
+		function hoverJudge(pointer_x,pointer_y,center_x,center_y,eye,eye_radius){
+			if(pointer_x > (center_x - eye_radius) && pointer_x < (center_x + eye_radius) && pointer_y < center_y){
+				eye.css({
+					top: '15%',
+					left: '50%'
+				})
+			}
+			else if(pointer_x > (center_x - eye_radius) && pointer_x < (center_x + eye_radius) && pointer_y > center_y){
+				eye.css({
+					top: '85%',
+					left: '50%'
+				})
+			}
+			else if(pointer_x < center_x && pointer_y > (center_y - eye_radius) && pointer_y < (center_y + eye_radius) ){
+				eye.css({
+					top: '50%',
+					left: '15%'
+				})
+			}
+			else if(pointer_x > center_x &&  pointer_y > (center_y - eye_radius) && pointer_y < (center_y + eye_radius) ){
+				eye.css({
+					top: '50%',
+					left: '85%'
+				})
+			}
+			else if(pointer_x < center_x && pointer_y < center_y){
+				eye.css({
+					top: '25%',
+					left: '25%'
+				})
+			}
+			else if(pointer_x > center_x && pointer_y < center_y){
+				eye.css({
+					top: '25%',
+					left: '75%'
+				})
+			}
+			else if(pointer_x < center_x && pointer_y > center_y){
+				eye.css({
+					top: '75%',
+					left: '25%'
+				})
+			}
+			else if(pointer_x > center_x && pointer_y > center_y){
+				eye.css({
+					top: '75%',
+					left: '75%'
+				})
+			}
+			else {
+				eye.css({
+					top: '50%',
+					left: '50%'
+				})
+			}
+		}
+		$(document).ready(function() {
+			$(".animsition").animsition({
+				inClass               :   'fade-in', // ロード時のエフェクト
+				outClass              :   'fade-out', //離脱時のエフェクト
+				inDuration            :    1500, //ロード時の演出時間
+				outDuration           :    800, //離脱時の演出時間
+				linkElement           :   '.animsition-link', //アニメーションを行う要素
+				// e.g. linkElement   :   'a:not([target="_blank"]):not([href^=#])'
+				loading               :    true, //ローディングの有効/無効
+				loadingParentElement  :   'body', //ローディング要素のラッパー
+				loadingClass          :   'animsition-loading', //ローディングのクラス
+				unSupportCss          : [ 'animation-duration',
+										'-webkit-animation-duration',
+										'-o-animation-duration'
+										],
+				overlay               :   false, //オーバーレイの有効/無効
+				overlayClass          :   'animsition-overlay-slide', //オーバーレイのクラス
+				overlayParentElement  :   'body' //オーバーレイ要素のラッパー
+			});
+		});
+	});
+</script>
+</head>
+<body>
+<div class="animsition" data-animsition-in-class="fade-in-down">
+<header class="headerBox">
+<div class="headerBox__logo">なんとか</div>
+	<nav class="headerBox__gnav">
+		<ul class="headerBox__gnav-lists">
+			<li class="gnavList"><a onclick="navClick(this)">ここから</a><div class="circleDeco"></div>
+				<ul class="menu">
+					<li><a href="" class="animsition-link" data-animsition-out-class="fade-out-down"
+						data-animsition-out-duration="1000">いつか</a></li>
+					<li><a href=""class="animsition-link" data-animsition-out-class="fade-out-down"
+						data-animsition-out-duration="1000">いつも</a></li>
+					<li><a href="" class="animsition-link" data-animsition-out-class="fade-out-down"
+						data-animsition-out-duration="1000">いつの</a></li>
+				</ul>
+			</li>
+			<li class="gnavList"><a onclick="navClick(this)">ここでは</a><div class="circleDeco"></div>
+				<ul class="menu">
+					<li><a href="" class="animsition-link" data-animsition-out-class="fade-out-down"
+						data-animsition-out-duration="1000">いつか</a></li>
+					<li><a href="" class="animsition-link" data-animsition-out-class="fade-out-down"
+						data-animsition-out-duration="1000">いつも</a></li>
+					<li><a href="" class="animsition-link" data-animsition-out-class="fade-out-down"
+						data-animsition-out-duration="1000">いつの</a></li>
+				</ul>
+			</li>
+			<li class="gnavList"><a onclick="navClick(this)">ここまで</a><div class="circleDeco"></div>
+				<ul class="menu">
+					<li><a href="" class="animsition-link" data-animsition-out-class="fade-out-down"
+						data-animsition-out-duration="1000">いつか</a></li>
+					<li><a href="" class="animsition-link" data-animsition-out-class="fade-out-down"
+						data-animsition-out-duration="1000">いつも</a></li>
+					<li><a href="" class="animsition-link" data-animsition-out-class="fade-out-down"
+						data-animsition-out-duration="1000">いつの</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+</header>
+<div>
+<div class="mainVis">
+	<div class="mainVis_eyeArea">
+		<div class="mainVis_eyeAreaL">
+			<div class="mainVis_eyeAreaL-left"></div>
+		</div>
+		<div class="mainVis_eyeAreaR">
+			<div class="mainVis_eyeAreaR-right"></div>
+		</div>
+	</div>
+	<div class="mainVis_mouthArea">
+		<div class="mouth_off"><img src="./img/mouth_close.png" alt=""></div>
+		<div class="mouth_on"><img src="./img/mouth_open.png" alt=""></div>
+	</div>
+	<button class="mouth_judge">Click Here !</button>
+</div>
+<section class="topic1">
+	<h2 class="topic1__title">サイト遷移</h2>
+	<div class="swiper-container">
+	<div class="swiper-wrapper">
+	<div class="topic1__contents swiper-slide">
+		<div class="topic1__contents-front">
+			<h3 class="panel__title">最後まで</h2>
+			<p>いつかいつかいつかいつかいつかいつかいつかいつかいつかいつかいつかいつかいつかいつかいつか</p>
+		</div>
+		<div class="topic1__contents-back">
+			<div class="panel__link">
+				<a href="" class="animsition-link" data-animsition-out-class="fade-out-right"
+				data-animsition-out-duration="1000" data-animsition-in-class="fade-in-right"
+				data-animsition-in-duration="1000">こっから</a>
+			</div>
+		</div>
+	</div>
+	<div class="topic1__contents swiper-slide">
+		<div class="topic1__contents-front">
+			<h3 class="panel__title">最後まで</h2>
+			<p>いつかいつかいつかいつかいつかいつかいつかいつかいつかいつかいつかいつかいつかいつかいつか</p>
+		</div>
+		<div class="topic1__contents-back">
+			<div class="panel__link">
+				<a href="https://front-lesson.work/topic4.html" class="animsition-link" data-animsition-out-class="fade-out-right"
+				data-animsition-out-duration="1000" data-animsition-in-class="fade-in-right"
+				data-animsition-in-duration="1000">こっから</a>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div class="swiper-button-prev"></div>
+  	<div class="swiper-button-next"></div> 
+	</div>
+</section>
+<div id="app" class="vueArea">
+	<vue-typer text="ここに表示させたいテキストを記述しよう！"></vue-typer>
+</div>
+
+</div>
+</main>
+<footer class="footer">
+	<div class="footer__box">
+		<div class="footer__box-ico"><img src="./img/mouth_close.png" alt="これからここから" width="140" height="140"></div>
+		<div class="footer__box-listsBox">
+			<div class="navTitle">今ママ</div>
+			<ul class="navArea">
+				<li><a>凝って</a></li>
+				<li><a>そのまま</a></li>
+				<li><a>そのまま</a></li>
+			</ul>
+		</div>
+		<div class="footer__box-listsBox">
+			<div class="navTitle">今ママ</div>
+			<ul class="navArea">
+				<li><a>凝って</a></li>
+				<li><a>そのまま</a></li>
+				<li><a>そのまま</a></li>
+			</ul>
+		</div>
+		<div class="footer__box-listsBox">
+			<div class="navTitle">今ママ</div>
+			<ul class="navArea">
+				<li><a>凝って</a></li>
+				<li><a>そのまま</a></li>
+				<li><a>たんこぶ</a></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+</div>
+<script>
+		var mySwiper = new Swiper ('.swiper-container', {
+			loop: false,
+			pagination: '.swiper-pagination',
+			nextButton: '.swiper-button-next',
+			prevButton: '.swiper-button-prev',
+			spaceBetween: 250,
+	})
+</script>
+</body>
+</html>
