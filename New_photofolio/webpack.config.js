@@ -2,12 +2,13 @@ const MODE = "development";
 
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
 	// エントリーポイント(メインのjsファイル)
 	entry: {
 		'js': path.resolve(__dirname, "./js/serve.js"),
-		'style': path.resolve(__dirname, "./buildcss/top.scss"),
+		//'style': path.resolve(__dirname, "./buildcss/top.scss"),
 	},
 	// ファイルの出力設定
 	output: {
@@ -16,6 +17,7 @@ module.exports = {
 		//filename: 'top.css',
 		path: path.resolve(__dirname, 'app'),
 		filename: 'app.js',
+		libraryTarget: 'umd'
 	},
 	mode: MODE,
 	node: {
@@ -25,18 +27,32 @@ module.exports = {
 	module: {
 		rules: [
 			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				use: [
+					{ loader: 'babel-loader',options: { presets: ["@babel/preset-env"]}},
+					{ loader: 'vue-loader'}
+				]
+			},
+			{
 				test: /\.scss$/,
 				use: [
 					{ loader: MiniCssExtractPlugin.loader },
 					{ loader: 'css-loader', options:{ url: false}},
 					{ loader: 'sass-loader' }
 				]
-			}
+			},
+			{
+				test: /\.vue$/, // ファイルが.vueで終われば...
+				exclude: /node_modules/,
+				loader: 'vue-loader' // vue-loaderを使う
+			},
 		]
 	},
 	plugins: [
 		new MiniCssExtractPlugin({
 			filename: '[name].css'
 		}),
+		new VueLoaderPlugin(),
 	],
 }
