@@ -1,14 +1,9 @@
-//import {VueTyper} from './vue/vue-typer.vue';
-//import Vue from 'vue';
 
+//import vueTyper from '../vue/vue-typer.vue'
 Vue.component('vue-typer', {
-  		template:`<div>A custom component!</div>`,
+	template: '<div>A custom component!</div>'
 })
-console.log('writing');
 
 var app = new Vue({
-	el: '#app',
-	components: {
-		'vue-typer':VueTyper,
-	},
+	el: '#app'
 });

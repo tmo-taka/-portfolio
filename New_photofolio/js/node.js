@@ -13,6 +13,7 @@ function getContentType(extension) {
       'htm' : 'text/htm',
       'css' : 'text/css',
       'js' : 'text/javaScript; charset=utf-8',
+      'mjs' : 'text/javaScript; charset=utf-8',
       'vue' : 'text/javaScript; charset=utf-8',
       'json' : 'application/json; charset=utf-8',
       'jpeg' : 'image/jpeg',
@@ -34,7 +35,6 @@ function encodingJudge(extension) {
   }
   return result;
 }
-
 
 server.on('request',
     function(req, res){

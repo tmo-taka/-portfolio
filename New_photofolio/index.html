@@ -9,11 +9,11 @@
 <link rel="stylesheet" href="./app/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.min.css">
 <link rel="stylesheet" href="./dist/css/animsition.min.css">
-<script type="text/javascript" src="./js/main.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="./js/main.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
-<script type="text/javascript" src="./js/test_vue.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.min.js"></script>
+<script src="https://unpkg.com/http-vue-loader"></script>
 <script src="./dist/js/animsition.min.js"></script>
 <script>
 	$(function(){
@@ -213,7 +213,7 @@
 	</div>
 </section>
 <div id="app" class="vueArea">
-	<vue-typer text="ここに表示させたいテキストを記述しよう！"></vue-typer>
+	<vue-typer></vue-typer>
 </div>
 
 </div>
@@ -257,5 +257,7 @@
 			spaceBetween: 250,
 	})
 </script>
+<!-- <script src="./js/test_vue.js"></script> -->
+<script src="./app/app.js"></script>
 </body>
 </html>
