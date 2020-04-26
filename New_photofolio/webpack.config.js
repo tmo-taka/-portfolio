@@ -1,20 +1,23 @@
 const MODE = "develop";
 
 const path = require('path');
+const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
 	// エントリーポイント(メインのjsファイル)
-	entry: './js/entry.js',
-		//'style': path.resolve(__dirname, "./buildcss/top.scss"),
+	entry: {
+		build: './js/entry.js',
+		style: './buildcss/top.scss'
+	},
 	// ファイルの出力設定
 	output: {
 	  	// 出力先(絶対パスでの指定必須) 
 		//path: path.resolve(__dirname, 'stylesheet'),
 		//filename: 'top.css',
 		path: path.resolve(__dirname, 'app'),
-		filename: 'app.js',
+		filename: '[name].js',
 		libraryTarget: 'umd'
 	},
 	mode: MODE,
@@ -24,7 +27,7 @@ module.exports = {
 	// ローダーの設定
 	module: {
 		rules: [
-			/*{{
+			/*{
 				test: /\.js$/,
 				exclude: /node_modules/,
 				use: [
@@ -36,21 +39,22 @@ module.exports = {
 				test: /\.vue$/, // ファイルが.vueで終われば...
 				exclude: /node_modules/,
 				loader: 'vue-loader' // vue-loaderを使う
-			},
+			},*/
+			{
 				test: /\.scss$/,
 				use: [
 					{ loader: MiniCssExtractPlugin.loader },
 					{ loader: 'css-loader', options:{ url: false}},
 					{ loader: 'sass-loader' }
 				]
-			},
-			*/
+			}
 		]
 	},
 	plugins: [
+		new FixStyleOnlyEntriesPlugin(),
 		new MiniCssExtractPlugin({
 			filename: '[name].css'
-		}),
+		})
 		/*new VueLoaderPlugin(),*/
 	],
 }
