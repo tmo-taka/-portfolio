@@ -1,5 +1,4 @@
 function navClick(link){
-	console.log('デぶ');
 	var targetElements = document.getElementsByClassName('gnavList');
 	for( var i = 0; i < targetElements.length; i++ ) {
 		targetElements[i].childNodes[1].classList.remove('circleDeco-active');
