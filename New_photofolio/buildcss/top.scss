@@ -260,7 +260,7 @@ $main-color: #5ABCA7;
                   content: "";
                   width: 20px;
                   height: 20px;
-                  background: url('../img/ico_arrow_on.png') 0 / contain;
+                  background: url('./img/ico_arrow_on.png') 0 / contain;
                   transform: translate(-50%, -50%);
                   position: absolute;
                   top: 50%;
@@ -274,7 +274,7 @@ $main-color: #5ABCA7;
                     transform: scale(1, 1);
                   }
                   &::after {
-                    background: url('../img/ico_arrow_off.png') 0 / contain;
+                    background: url('./img/ico_arrow_off.png') 0 / contain;
                   }
                 }
               }

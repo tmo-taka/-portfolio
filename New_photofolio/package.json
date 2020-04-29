@@ -5,6 +5,7 @@
   "main": "postcss.config.js",
   "dependencies": {
     "forever": "^2.0.0",
+    "jquery": "^3.5.0",
     "nodemon": "^2.0.3",
     "uniq": "^1.0.1",
     "vue": "^2.6.11"
@@ -29,7 +30,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --mode development --watch",
+    "start": "webpack-dev-server --mode development --inline",
     "build:dev": "webpack --mode development --display-modules",
     "build": "webpack --mode production "
   },

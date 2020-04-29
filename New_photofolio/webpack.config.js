@@ -22,7 +22,6 @@ module.exports = {
 	},
 	devtool: "source-map",
 	mode: MODE,
-	cache: true,
 	node: {
 		fs: "empty"
 	},
@@ -59,4 +58,9 @@ module.exports = {
 		}),
 		new VueLoaderPlugin()
 	],
+	devServer: {
+		contentBase: path.resolve(__dirname, 'app'),
+		inline: true,
+		hot: true,
+	},
 }
