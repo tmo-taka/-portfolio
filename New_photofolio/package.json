@@ -29,7 +29,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --mode production --open",
+    "start": "webpack-dev-server --mode development --watch",
     "build:dev": "webpack --mode development --display-modules",
     "build": "webpack --mode production "
   },

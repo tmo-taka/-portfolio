@@ -1,4 +1,4 @@
-const MODE = "develop";
+const MODE = "development";
 
 const path = require('path');
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
@@ -20,7 +20,9 @@ module.exports = {
 		filename: '[name].js',
 		libraryTarget: 'umd'
 	},
+	devtool: "source-map",
 	mode: MODE,
+	cache: true,
 	node: {
 		fs: "empty"
 	},
@@ -31,15 +33,15 @@ module.exports = {
 				test: /\.js$/,
 				exclude: /node_modules/,
 				use: [
-					{ loader: 'babel-loader',options: { presets: ["@babel/preset-env"]}},
+					//{ loader: 'babel-loader',options: { presets: ["@babel/preset-env"]}},
 					{ loader: 'vue-loader'}
 				]
-			},
+			},*/
 			{
 				test: /\.vue$/, // ファイルが.vueで終われば...
 				exclude: /node_modules/,
 				loader: 'vue-loader' // vue-loaderを使う
-			},*/
+			},
 			{
 				test: /\.scss$/,
 				use: [
@@ -54,7 +56,7 @@ module.exports = {
 		new FixStyleOnlyEntriesPlugin(),
 		new MiniCssExtractPlugin({
 			filename: '[name].css'
-		})
-		/*new VueLoaderPlugin(),*/
+		}),
+		new VueLoaderPlugin()
 	],
 }

@@ -1,9 +1,16 @@
 
-//import vueTyper from '../vue/vue-typer.vue'
-Vue.component('vue-typer', {
-	template: '<div>A custom component!</div>'
-})
+import vueType from '../vue/vue-type.vue'
 
 var app = new Vue({
-	el: '#app'
+	el: '#app',
+	components: { vueType },
+	data: {
+		gLink: [
+			{ text: 'いつか', link: '/' },
+			{ text: 'このまま', link: '/' }
+		]
+	}
 });
+
+export default {
+}

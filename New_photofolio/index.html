@@ -130,12 +130,9 @@
 		<ul class="headerBox__gnav-lists">
 			<li class="gnavList"><a onclick="navClick(this)">ここから</a><div class="circleDeco"></div>
 				<ul class="menu">
-					<li><a href="" class="animsition-link" data-animsition-out-class="fade-out-down"
-						data-animsition-out-duration="1000">いつか</a></li>
-					<li><a href=""class="animsition-link" data-animsition-out-class="fade-out-down"
-						data-animsition-out-duration="1000">いつも</a></li>
-					<li><a href="" class="animsition-link" data-animsition-out-class="fade-out-down"
-						data-animsition-out-duration="1000">いつの</a></li>
+					<li v-for="item in gLink">
+					<a v-bind:href="item.link" data-animsition-out-class="fade-out-down" data-animsition-out-duration="1000">{{item.text}}</a>
+					</li>
 				</ul>
 			</li>
 			<li class="gnavList"><a onclick="navClick(this)">ここでは</a><div class="circleDeco"></div>
@@ -212,7 +209,7 @@
   	<div class="swiper-button-next"></div> 
 	</div>
 </section>
-<vue-typer></vue-typer>
+<vue-type></vue-type>
 
 
 </div>
