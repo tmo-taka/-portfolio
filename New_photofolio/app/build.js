@@ -139,6 +139,8 @@ _test_vue__WEBPACK_IMPORTED_MODULE_0__["default"];
 }
 
 global.navClick = navClick;
+
+
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ }),
