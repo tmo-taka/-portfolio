@@ -62,5 +62,6 @@ module.exports = {
 		contentBase: path.resolve(__dirname, 'app'),
 		inline: true,
 		hot: true,
+		watchContentBase: true,
 	},
 }

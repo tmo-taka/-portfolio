@@ -1,6 +1,11 @@
 @import url('./rcss.css');
 
 $main-color: #5ABCA7;
+$font-color: #1C1C1C;
+
+body {
+  color: #1C1C1C;
+}
 
 .headerBox {
   padding: 1em 3em 1em 1em;
@@ -286,14 +291,31 @@ $main-color: #5ABCA7;
     }
 }
 
-.footer {
+.topic2 {
+  padding: 72px 36px;
   background-color: $main-color;
+}
+
+.selfBox {
+  margin: 0 auto;
+  padding: 2em;
+  width: 520px;
+  border: solid 1px $main-color;
+  background-color: #FFF;
+}
+
+.footer {
+  background-color: #FFF;
   &__box {
     display: flex;
     padding: 20px 40px;
     width: 100%;
     &-ico {
       margin-right: 60vw;
+    }
+    &-listsBox {
+      padding: 0 8px;
+      width: 10%;
     }
   }
 }
@@ -304,11 +326,17 @@ $main-color: #5ABCA7;
 }
 .navArea {
   li {
-    margin-left: 1em;
     font-size: 18px;
+    border-bottom: solid 1px transparent;
+    transition: border 1s;
+    &:hover {
+      border-bottom: solid 1px $main-color;
+    }
     a {
       display: block;
-      padding: 2px 2px;
+      padding: 3px 0;
+      color: $font-color;
+      text-decoration: none;
       cursor: pointer;
     }
   }

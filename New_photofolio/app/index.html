@@ -12,7 +12,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.min.js"></script>
 <script src="https://unpkg.com/http-vue-loader"></script>
-<script src="./js/animsition.min.js"></script>
 <script>
 	$(function(){
 		var leftEye = $('.mainVis_eyeAreaR-right');
@@ -128,29 +127,23 @@
 		<ul class="headerBox__gnav-lists">
 			<li class="gnavList"><a onclick="navClick(this)">ここから</a><div class="circleDeco"></div>
 				<ul class="menu">
-					<li v-for="item in gLink">
-					<a v-bind:href="item.link" data-animsition-out-class="fade-out-down" data-animsition-out-duration="1000">{{item.text}}</a>
+					<li v-for="item in gLink[0]" :key="item.id">
+					<a v-bind:href="item.link">{{item.text}}</a>
 					</li>
 				</ul>
 			</li>
 			<li class="gnavList"><a onclick="navClick(this)">ここでは</a><div class="circleDeco"></div>
 				<ul class="menu">
-					<li><a href="" class="animsition-link" data-animsition-out-class="fade-out-down"
-						data-animsition-out-duration="1000">いつか</a></li>
-					<li><a href="" class="animsition-link" data-animsition-out-class="fade-out-down"
-						data-animsition-out-duration="1000">いつも</a></li>
-					<li><a href="" class="animsition-link" data-animsition-out-class="fade-out-down"
-						data-animsition-out-duration="1000">いつの</a></li>
+					<li v-for="item in gLink[1]" :key="item.id">
+					<a v-bind:href="item.link">{{item.text}}</a>
+					</li>
 				</ul>
 			</li>
 			<li class="gnavList"><a onclick="navClick(this)">ここまで</a><div class="circleDeco"></div>
 				<ul class="menu">
-					<li><a href="" class="animsition-link" data-animsition-out-class="fade-out-down"
-						data-animsition-out-duration="1000">いつか</a></li>
-					<li><a href="" class="animsition-link" data-animsition-out-class="fade-out-down"
-						data-animsition-out-duration="1000">いつも</a></li>
-					<li><a href="" class="animsition-link" data-animsition-out-class="fade-out-down"
-						data-animsition-out-duration="1000">いつの</a></li>
+					<li v-for="item in gLink[2]" :key="item.id">
+					<a v-bind:href="item.link">{{item.text}}</a>
+					</li>
 				</ul>
 			</li>
 		</ul>
@@ -207,7 +200,9 @@
   	<div class="swiper-button-next"></div> 
 	</div>
 </section>
+<div class="topic2">
 <vue-type></vue-type>
+</div>
 
 
 </div>
@@ -218,31 +213,32 @@
 		<div class="footer__box-listsBox">
 			<div class="navTitle">今ママ</div>
 			<ul class="navArea">
-				<li><a>凝って</a></li>
-				<li><a>そのまま</a></li>
-				<li><a>そのまま</a></li>
+				<li v-for="item in gLink[0]" :key="item.id">
+				<a v-bind:href="item.link">{{item.text}}</a>
+				</li>
 			</ul>
 		</div>
 		<div class="footer__box-listsBox">
 			<div class="navTitle">今ママ</div>
 			<ul class="navArea">
-				<li><a>凝って</a></li>
-				<li><a>そのまま</a></li>
-				<li><a>そのまま</a></li>
+				<li v-for="item in gLink[1]" :key="item.id">
+				<a v-bind:href="item.link">{{item.text}}</a>
+				</li>
 			</ul>
 		</div>
 		<div class="footer__box-listsBox">
 			<div class="navTitle">今ママ</div>
 			<ul class="navArea">
-				<li><a>凝って</a></li>
-				<li><a>そのまま</a></li>
-				<li><a>たんこddaでこ</a></li>
+				<li v-for="item in gLink[2]" :key="item.id">
+				<a v-bind:href="item.link">{{item.text}}</a>
+				</li>
 			</ul>
 		</div>
 	</div>
 </footer>
 </div>
 <script src="./build.js"></script>
+<script src="./js/animsition.min.js"></script>
 <script>
 	var mySwiper = new Swiper ('.swiper-container', {
 		loop: false,
